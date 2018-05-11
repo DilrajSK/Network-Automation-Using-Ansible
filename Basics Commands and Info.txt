@@ -1,0 +1,40 @@
+ANSIBLE BASIc COMMANDS AND OTHER INFO
+**************************************************************
+
+1. ansible --version (Command to check the Version of ansible)
+
+2. /etc/ansible/ansible.cfg (Defaulf location of ansible config file)
+
+3. /etc/hosts (Default location of hosts file. Used for DNS resolution)
+
+4. Sample hosts file after adding the DNS entries for three routers (R1,R2 and R3):
+root@Auto:~# more /etc/hosts
+127.0.1.1       Auto
+127.0.0.1       localhost
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+192.168.122.100 R1
+192.168.122.101 R2
+192.168.122.102 R3
+
+
+5. One can make its own config file in any location with name as "ansible.cfg". The sample content is as below:
+root@Auto:~# more ansible.cfg
+[defaults]
+hostfile=./inv (Give the location where the inventory file is located. In our case its in the same location as the config file(in root directory))
+host_key_checking=false
+timeout=10
+
+6. Contents of 'inv' file:
+[routers] (This is the way we group the devices in inventory file. Any word can be used in place of 'routers')
+R1
+R2
+R3
+
+ansible --list-hosts all (List all the hosts available in the Inventory)
+
+NOTE: THE TEXTS IN PARENTHESES ARE COMMENTS
