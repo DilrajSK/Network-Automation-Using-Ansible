@@ -35,6 +35,6 @@ ANSIBLE BASIC COMMANDS AND OTHER INFO
    R2
    R3
 
-ansible --list-hosts all (List all the hosts available in the Inventory)
+7. ansible --list-hosts all (List all the hosts available in the Inventory)
 
 NOTE: THE TEXTS IN PARENTHESES ARE COMMENTS
