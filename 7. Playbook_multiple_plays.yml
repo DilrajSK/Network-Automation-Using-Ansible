@@ -45,9 +45,8 @@
       debug: var=output
 ...
 
-Contents of inventory file is as below:
+#Contents of inventory file is as below:
 
-root@Auto2:~# clear
 root@Auto2:~# more inv
 [routers]
 R1
@@ -58,4 +57,4 @@ S1
 S2
 root@Auto2:~#
 
-COMMAND TO RUN THE SCRIPT: ansible-playbook <playbook_name>.yml
+#COMMAND TO RUN THE SCRIPT: ansible-playbook <playbook_name>.yml
