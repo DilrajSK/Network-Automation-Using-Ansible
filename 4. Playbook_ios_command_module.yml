@@ -14,4 +14,4 @@
     - name: Display Output on the Console
       debug: var=output
  
- COMMAND TO RUN THE SCRIPT: ansible-playbook <script_name>.yml -u <username> -k
+ #COMMAND TO RUN THE SCRIPT: ansible-playbook <script_name>.yml -u <username> -k
