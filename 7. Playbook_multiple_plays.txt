@@ -1,0 +1,61 @@
+---
+- name: Configuring Routers
+  hosts: routers
+  gather_facts: false
+  connection: local
+
+  vars:
+    rdetails:
+      username: dilraj
+      password: dilraj
+      authorize: yes
+  tasks:
+    - name: Send Commands to the Routers
+      ios_config:
+        provider: "{{rdetails}}"
+        parents: router ospf 1
+        lines:
+          - network 0.0.0.0 255.255.255.255 area 0
+      register: output
+    - name: Display Output on the Console
+      debug: var=output
+
+- name: Configuring Switches
+  hosts: switches
+  gather_facts: false
+  connection: local
+
+  vars:
+    sdetails:
+      username: dilraj
+      password: dilraj
+      authorize: yes
+
+  tasks:
+    - name: Send Commands to the Switches
+      ios_config:
+        provider: "{{sdetails}}"
+        lines:
+          - vlan 2
+          - vlan 3
+          - vlan 4
+      register: output
+
+    - name: Display output on the console
+      debug: var=output
+...
+
+Contents of inventory file is as below:
+
+root@Auto2:~# clear
+root@Auto2:~# more inv
+[routers]
+R1
+R2
+R3
+[switches]
+S1
+S2
+root@Auto2:~#
+
+COMMAND TO RUN THE SCRIPT: ansible-playbook <playbook_name>.yml
