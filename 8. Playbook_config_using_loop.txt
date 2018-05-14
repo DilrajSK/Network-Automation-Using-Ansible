@@ -1,0 +1,31 @@
+---
+- name: Add Interfaces to the VLAN
+  hosts: access
+  gather_facts: false
+  connection: local
+
+  vars:
+    dev_details:
+      username: dilraj
+      password: dilraj
+      authorize: yes
+
+  tasks:
+    - name: Interface Settings
+      ios_config:
+        provider: "{{dev_details}}"
+        parents: interface {{item.interface}}
+        lines:
+          - switchport access vlan {{item.vlan}}
+          - switchport voice vlan {{item.voice_vlan}}
+          - switchport port-security maximum 2
+        after:
+          - no shut
+      with_items:
+        - {interface: Ethernet3/0, vlan: 100, voice_vlan: 101}
+        - {interface: Ethernet3/1, vlan: 10, voice_vlan: 101}
+        - {interface: Ethernet3/2, vlan: 20, voice_vlan: 101}
+      register: output
+
+    - name: Display output on the Console
+      debug: var=output
