@@ -29,3 +29,5 @@
 
     - name: Display output on the Console
       debug: var=output
+      
+#COMMAND TO RUN THE SCRIPT: ansible-playbook <playbook_name>.yml
