@@ -20,3 +20,5 @@
       register: output
     - name: Display the Output
       debug: var=output
+
+COMMAND TO RUN THE SCRIPT: ansible-playbook <script_name>.yml
