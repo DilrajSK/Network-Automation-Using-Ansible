@@ -16,4 +16,4 @@
   - name: Saving Running-Config
     copy: content="{{output_stdout[0]}}" dest="./allconfigs/{{inventory_hostname}}.txt"
     
-COMMAND TO RUN THE SCRIPT: ansible-playbook <script_name>.yml -u <username> -k
+#COMMAND TO RUN THE SCRIPT: ansible-playbook <script_name>.yml -u <username> -k
