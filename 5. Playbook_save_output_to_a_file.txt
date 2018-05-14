@@ -1,0 +1,17 @@
+---
+- name: Save Running Config
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Getting Running-Config
+      ios_command:
+        authorize: yes
+        commands:
+          - show run
+      register: output
+  - name: Displaying Running-Config on the Console
+    debug: var=output
+  - name: Saving Running-Config
+    copy: content="{{output_stdout[0]}}" dest="./allconfigs/{{inventory_hostname}}.txt"
