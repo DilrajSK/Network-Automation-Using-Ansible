@@ -1,2 +1,11 @@
-Linux:$ sudo apt-get update
-Linux:$ sudo apt-get install ansible
+******* USING apt-get *******
+
+Linux:$ apt-get update
+Linux:$ apt-get install ansible
+
+******** USING pip *********
+
+Linux:$ apt-get install python-pip
+Linux:$ pip install ansible
+
+NOTE: Installing ansible using "apt-get" will install the package which comes with the distribution that you are running. With "pip", you will get the latest avaiable package.
