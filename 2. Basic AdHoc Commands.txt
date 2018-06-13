@@ -1,9 +1,11 @@
 ANSIBLE AD-HOC COMMANDS
 ******************************************************************
 
-1. ansible <R1> -m raw -a	"show version" -u <dilraj> -k (Display software version for Router R1)
+1. ansible <R1> -m raw -a "show version" -u <dilraj> -k (Display software version for Router R1)
 
-2. ansible <gns3-ios> -i ./hosts -m raw -a "show version" -u <dilraj> -k (Display software version for all devices in gns3-ios group)
+2. ansible <device> -m ping (check if we can reach to a specific device using ansible)
+
+3. ansible <gns3-ios> -i ./hosts -m raw -a "show version" -u <dilraj> -k (Display software version for all devices in gns3-ios group)
 NOTE: Use keyword 'all' in place of "gns3-ios" in case we need to do the same for all the devices in the inventory file.
 
 Sample Inventory file:
@@ -13,12 +15,12 @@ R1
 R2
 R3
 
-3. ansible R1 -m raw -a "show version" -u <dilraj> -k | grep Version (This will just show the line which has the keyword "version" in its show version)
+4. ansible R1 -m raw -a "show version" -u <dilraj> -k | grep Version (This will just show the line which has the keyword "version" in its show version)
 
-4. ansible R1 -m raw -a "show run" -u <dilraj> -k > show_run.txt (Store the running config in a file)
+5. ansible R1 -m raw -a "show run" -u <dilraj> -k > show_run.txt (Store the running config in a file)
 
-5. Use arguments such as "sh mac-address-table" or "sh arp" while troubleshooting some issue and grep the MAC/IP address by using the below command sample:
+6. Use arguments such as "sh mac-address-table" or "sh arp" while troubleshooting some issue and grep the MAC/IP address by using the below command sample:
 ansible R1 -m raw -a "sh mac-address-table" -u <dilraj> -k | grep '<type few letters of MAC address or IP address>'
 
-6. If need to search for multiple keywords in grep, use the operator \| in between the keywords. Sample below:
+7. If need to search for multiple keywords in grep, use the operator \| in between the keywords. Sample below:
 ansible R1 -m raw -a "sh mac-address-table" -u <dilraj> -k | grep 'SUCCESS\|1111.2222.3333'
